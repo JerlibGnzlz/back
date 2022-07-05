@@ -4,6 +4,7 @@ const { ACCESS_TOKEN } = process.env;
 
 class PaymentService {
   async createPayment(req) {
+    //MANEJAR EXCEPCIONES CON TRY CATCH PARA VER DETALLE EN CASO DE ERROR
     const items = req.body.product.map((i) => {
       return {
         title: i.name,
@@ -31,6 +32,7 @@ class PaymentService {
       },
       notification_url: "http://www.your-site.com/ipn",
     };
+    //console.log("llegue hasta aca")
     const payment = await axios.post(url, body, {
       headers: {
         "Content-Type": "application/json",
