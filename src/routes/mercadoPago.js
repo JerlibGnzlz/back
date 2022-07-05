@@ -7,13 +7,12 @@ const PaymentService = require("../services/PaymentService");
 
 const PaymentInstance = new PaymentController(new PaymentService());
 
-router.get("/", function(req, res, next){
-    return res.json({
-        "/payment": "generate a payment link",
-    });
-})
+router.get("/", cors(), function (req, res, next) {
+  return res.json({
+    "/payment": "generate a payment link",
+  });
+});
 
-router.post("/payment", function(req, res, next) {
-    PaymentInstance.getPaymentLink(req, res);
-})
-
+router.post("/payment", cors(), function (req, res, next) {
+  PaymentInstance.getPaymentLink(req, res);
+});
