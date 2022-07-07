@@ -4,7 +4,6 @@ const controller = {};
 
 controller.category = async (req, res) => {
   let { genre, brand } = req.query;
-  console.log(genre,'esto es el gennre')
   try{
     let allCategories = undefined
     let product = []
