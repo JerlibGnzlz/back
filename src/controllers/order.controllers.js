@@ -74,9 +74,8 @@ controller.generateOrder = async (req, res) => {
     else if(doesUserExist){
         let total = 0
         for(let i = 0; i < product.length; i++){
-            total = total + parseFloat(product[i].price)
+            total = total + (parseFloat(product[i].price) * product[i].quantity)
             current = await Product.findOne({where:{id:product[i].id}})
-            console.log(product[i].price, "totaltlatlat")
             await Product.update({stock: current.stock - product[i].quantity}, {where: {id: product[i].id}})
         }
         let date = new Date()
