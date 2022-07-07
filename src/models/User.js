@@ -31,6 +31,11 @@ module.exports = (sequelize) => {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+    favorites:{
+      type: DataTypes.ARRAY(DataTypes.DECIMAL),
+      defaultValue: [],
+      allowNull: true,
+    },
     enabled: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
