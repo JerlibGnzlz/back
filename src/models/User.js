@@ -31,6 +31,12 @@ module.exports = (sequelize) => {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+    genre: {
+      type: DataTypes.ENUM("male", "female"),
+    },
+    image: {
+      type: DataTypes.STRING,
+    },
     enabled: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
