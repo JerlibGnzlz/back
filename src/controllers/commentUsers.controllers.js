@@ -5,10 +5,11 @@ const controller = {};
 
 controller.getComments = async (req, res) => {
   const { id } = req.query;
+  console.log(id, "aaa");
   if (id) {
     try {
       const searchComments = await Coments.findAll({
-        where: { id },
+        where: { productId: id },
         include: [
           {
             model: Product,
