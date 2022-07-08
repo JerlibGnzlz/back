@@ -70,14 +70,17 @@ controller.getUserById = async (req, res) => {
 
 controller.updateUser = async (req, res) => {
   const { id } = req.params;
-  const { user } = req.body;
+  const { enabled, isAdmin } = req.body;
 
   try {
-    User.update(user, {
-      where: {
-        id,
-      },
-    });
+    User.update(
+      { enabled, isAdmin },
+      {
+        where: {
+          id,
+        },
+      }
+    );
     res.status(200).send("Usuario editado");
   } catch (err) {
     res.status(400).send(err);

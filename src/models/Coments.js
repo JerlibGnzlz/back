@@ -11,8 +11,10 @@ module.exports = (sequelize) => {
       },
     },
 
+
     review: {
       type: DataTypes.TEXT,
+
     },
   });
 };
