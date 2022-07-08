@@ -11,10 +11,14 @@ const verifyUser = require("./verifyUser");
 const userAddress = require("./userAddress");
 const userProfile = require("./userProfile");
 
+const modificateAdmin = require("./userAdminMod");
+
+
 const order = require("./order");
 const favorites = require("./favorites");
 
 const commentUsers = require("./commentUsers");
+
 
 //const softMiddleware = require("../middleware/integrationSoft");
 //const middleware = require("../middleware");
@@ -36,6 +40,7 @@ router.use("/verify", verifyUser);
 
 router.use("/userAddress", userAddress);
 router.use("/profile", userProfile);
+router.use("/adminMod", modificateAdmin);
 
 router.use("/comments", commentUsers);
 
