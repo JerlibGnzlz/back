@@ -37,12 +37,11 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-
-    favorites:{
+    },
+    favorites: {
       type: DataTypes.ARRAY(DataTypes.DECIMAL),
       defaultValue: [],
       allowNull: true,
-
     },
     enabled: {
       type: DataTypes.BOOLEAN,
