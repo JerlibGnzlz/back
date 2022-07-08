@@ -1,18 +1,18 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define('coments', {
+  sequelize.define("coments", {
     rating: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         min: 1,
-        max: 5
-      }
+        max: 5,
+      },
     },
-    coment: {
+    review: {
       type: DataTypes.TEXT,
-      allowNull: true
-    }
-  })
-}
+      allowNull: true,
+    },
+  });
+};
