@@ -72,8 +72,13 @@ UserPayment.belongsTo(User);
 PaymentType.hasMany(UserPayment);
 UserPayment.belongsTo(PaymentType);
 
-User.belongsToMany(Product, { through: "coments" });
-Product.belongsToMany(User, { through: "coments" });
+User.hasMany(Coments, { foreignKey: { allowNull: false } });
+Coments.belongsTo(User);
+
+Product.hasMany(Coments, { foreignKey: { allowNull: false } });
+Coments.belongsTo(Product);
+// User.belongsToMany(Product, { through: "coments" });
+// Product.belongsToMany(User, { through: "coments" });
 
 User.belongsToMany(Product, { through: "carItem" });
 Product.belongsToMany(User, { through: "carItem" });
