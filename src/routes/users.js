@@ -11,3 +11,5 @@ router.get("/:id", controller.getUserById);
 router.put("/:id", controller.updateUser);
 
 router.post("/", controller.createUser);
+
+router.delete("/:id", controller.enabledUserAdmin);

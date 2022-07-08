@@ -128,4 +128,24 @@ controller.createUser = async (req, res) => {
   }
 };
 
+controller.enabledUserAdmin = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const doesExist = await User.findOne({
+      where: { [Op.and]: { id: id, enabled: true } },
+    });
+
+    if (doesExist) {
+      User.update({ enabled: false }, { where: { id } });
+      res.status(200).send("user disabled");
+    } else {
+      User.update({ enabled: true }, { where: { id } });
+      res.status(200).send("user enabled");
+    }
+  } catch (err) {
+    res.status(400).send(err);
+  }
+};
+
 module.exports = controller;
