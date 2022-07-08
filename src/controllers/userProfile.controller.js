@@ -21,6 +21,7 @@ controller.getUserProfile = async (req, res) => {
         phone: users.phone,
         birthDate: users.birthDate,
         genre: users.genre,
+        image: users.image,
       });
     } catch (err) {
       res.status(400).send(err);
