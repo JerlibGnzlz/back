@@ -31,11 +31,17 @@ module.exports = (sequelize) => {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+
     genre: {
       type: DataTypes.ENUM("male", "female"),
     },
     image: {
       type: DataTypes.STRING,
+    },
+    favorites:{
+      type: DataTypes.ARRAY(DataTypes.DECIMAL),
+      defaultValue: [],
+      allowNull: true,
     },
     enabled: {
       type: DataTypes.BOOLEAN,
