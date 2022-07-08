@@ -9,12 +9,8 @@ controller.getFavorites = async (req, res) => {
     let{email} = req.params 
     try{
         let user = await User.findOne({where: {email: email}})
-        if(user.favorites.length !== 0){
-            res.status(200).send(await Product.findAll({where: {id: user.favorites}, include: [{ model: Brand }, { model: Category }]}))
-        }
-        else{
-            res.status(404).send({error: true, msg: "has no favorites"})
-        }
+        res.status(200).send(await Product.findAll({where: {id: user.favorites}, include: [{ model: Brand }, { model: Category }]}))
+        
     }
     catch(err){
         res.status(400).send(err)
