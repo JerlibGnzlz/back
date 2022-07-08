@@ -20,6 +20,7 @@ controller.getUserProfile = async (req, res) => {
         lastNames: users.lastNames,
         phone: users.phone,
         birthDate: users.birthDate,
+        genre: users.genre,
       });
     } catch (err) {
       res.status(400).send(err);
@@ -31,11 +32,11 @@ controller.getUserProfile = async (req, res) => {
 
 controller.updateUser = async (req, res) => {
   const { email } = req.params;
-  const { names, lastNames, phone, birthDate } = req.body;
+  const { names, lastNames, phone, birthDate, genre } = req.body;
 
   try {
     User.update(
-      { names, lastNames, phone, birthDate },
+      { names, lastNames, phone, birthDate, genre },
       {
         where: {
           email,
