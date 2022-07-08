@@ -7,12 +7,13 @@ class PaymentController {
 
   async getPaymentLink(req, res) {
     try {
-      console.log(req);
+      // console.log(req)
       const payment = await this.subscriptionService.createPayment(req);
+      console.log(payment);
       let user = await User.findOne({ where: { email: req.body.user } });
       let order = await Order.create({
         state: "pending",
-        total: req.body.total,
+        total: payment[1],
         userId: user.id,
       });
       await req.body.product.map(async (p) => {
@@ -22,9 +23,9 @@ class PaymentController {
           quantity: p.quantity,
         });
       });
-      console.log(order);
-      console.log(await OrderItem.findAll());
-      return res.json(payment);
+      // console.log(order)
+      // console.log(await OrderItem.findAll())
+      return res.json(payment[0]);
     } catch (err) {
       console.log(err);
 

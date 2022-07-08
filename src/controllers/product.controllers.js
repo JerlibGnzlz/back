@@ -231,8 +231,17 @@ controller.createProduct = async (req, res) => {
 
 controller.editPorduct = async (req, res) => {
   const { id } = req.params;
-  const { name, description, model, price, image, brandId, categoryId, genre } =
-    req.body;
+  const {
+    name,
+    description,
+    model,
+    price,
+    image,
+    brandId,
+    categoryId,
+    genre,
+    enabled,
+  } = req.body;
 
   try {
     const product = await schema.validateAsync({
@@ -244,6 +253,7 @@ controller.editPorduct = async (req, res) => {
       brandId: brandId,
       categoryId: categoryId,
       genre: genre,
+      enabled,
     });
 
     Product.update(product, {
@@ -251,7 +261,7 @@ controller.editPorduct = async (req, res) => {
         id,
       },
     });
-    res.status(200).send("Usuario editado");
+    res.status(200).send("producto editado");
   } catch (err) {
     res.status(400).send(err);
   }

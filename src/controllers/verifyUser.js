@@ -10,7 +10,8 @@ const verifyUser = async (req, res) => {
   });
 
   if (userExist) {
-    res.status(200).send("user exist");
+    // const emailfound = userExist.map((e) => e.id);
+    res.status(200).send(userExist);
   } else {
     res.status(400).send("must be register");
   }
