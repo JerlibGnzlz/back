@@ -24,7 +24,10 @@ controller.product = async (req, res) => {
       res.status(200).send(
         await Product.findAll({
           where: {
-            id: id,
+            [Op.and]: {
+              id: id,
+              enabled: true,
+            },
           },
           include: [{ model: Brand }, { model: Category }],
         })
@@ -44,6 +47,7 @@ controller.product = async (req, res) => {
                   genre: genre,
                   brandId: brand,
                   categoryId: category,
+                  enabled: true,
                 },
               },
               order: orderByPrice,
@@ -62,6 +66,7 @@ controller.product = async (req, res) => {
                   name: { [Op.substring]: search },
                   genre: genre,
                   categoryId: category,
+                  enabled: true,
                 },
               },
               order: orderByPrice,
@@ -80,6 +85,7 @@ controller.product = async (req, res) => {
                   name: { [Op.substring]: search },
                   genre: genre,
                   brandId: brand,
+                  enabled: true,
                 },
               },
               order: orderByPrice,
@@ -98,6 +104,7 @@ controller.product = async (req, res) => {
               [Op.and]: {
                 name: { [Op.substring]: search },
                 genre: genre,
+                enabled: true,
               },
             },
             order: orderByPrice,
@@ -118,6 +125,7 @@ controller.product = async (req, res) => {
                 name: { [Op.substring]: search },
                 brandId: brand,
                 categoryId: category,
+                enabled: true,
               },
             },
             order: orderByPrice,
@@ -135,6 +143,7 @@ controller.product = async (req, res) => {
               [Op.and]: {
                 name: { [Op.substring]: search },
                 categoryId: category,
+                enabled: true,
               },
             },
             order: orderByPrice,
@@ -152,6 +161,7 @@ controller.product = async (req, res) => {
               [Op.and]: {
                 name: { [Op.substring]: search },
                 brandId: brand,
+                enabled: true,
               },
             },
             order: orderByPrice,
@@ -167,7 +177,9 @@ controller.product = async (req, res) => {
       res.status(200).send(
         await Product.findAll({
           where: {
-            name: { [Op.iLike]: `%${search}%` },
+            [Op.and]: { name: { [Op.iLike]: `%${search}%` }, enabled: true },
+            // name: { [Op.iLike]: `%${search}%` },
+            // enabled: true,
           },
           order: orderByPrice,
           include: [{ model: Brand }, { model: Category }],

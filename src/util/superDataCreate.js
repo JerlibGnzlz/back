@@ -66,6 +66,7 @@ const shoes = [
     genre: "men",
     categoryId: 1,
     brandId: 8,
+    enabled: true,
   },
 
   {
