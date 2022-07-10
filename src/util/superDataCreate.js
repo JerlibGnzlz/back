@@ -570,6 +570,7 @@ const user = [
     lastNames: "Neubigin nothi",
     phone: "+5496684645",
     birthDate: "1983-11-11",
+    genre: "male",
   },
 
   {
