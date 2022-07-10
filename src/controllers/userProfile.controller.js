@@ -32,7 +32,7 @@ controller.getUserProfile = async (req, res) => {
 };
 
 controller.updateUser = async (req, res) => {
-  const { email } = req.params;
+  const { id } = req.params;
   const { names, lastNames, phone, birthDate, genre } = req.body;
 
   try {
@@ -40,7 +40,7 @@ controller.updateUser = async (req, res) => {
       { names, lastNames, phone, birthDate, genre },
       {
         where: {
-          email,
+          id,
         },
       }
     );

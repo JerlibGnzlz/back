@@ -241,39 +241,58 @@ controller.createProduct = async (req, res) => {
   }
 };
 
+// controller.editPorduct = async (req, res) => {
+//   const { id } = req.params;
+//   const {
+//     name,
+//     description,
+//     model,
+//     price,
+//     image,
+//     brandId,
+//     categoryId,
+//     genre,
+//     enabled,
+//   } = req.body;
+
+//   try {
+//     const product = await schema.validateAsync({
+//       name: name,
+//       description: description,
+//       model: model,
+//       price: price,
+//       image: image,
+//       brandId: brandId,
+//       categoryId: categoryId,
+//       genre: genre,
+//       enabled,
+//     });
+
+//     Product.update(product, {
+//       where: {
+//         id,
+//       },
+//     });
+//     res.status(200).send("producto editado");
+//   } catch (err) {
+//     res.status(400).send(err);
+//   }
+// };
+
 controller.editPorduct = async (req, res) => {
   const { id } = req.params;
-  const {
-    name,
-    description,
-    model,
-    price,
-    image,
-    brandId,
-    categoryId,
-    genre,
-    enabled,
-  } = req.body;
+  const { name, description, model, price, genre } = req.body;
 
   try {
-    const product = await schema.validateAsync({
-      name: name,
-      description: description,
-      model: model,
-      price: price,
-      image: image,
-      brandId: brandId,
-      categoryId: categoryId,
-      genre: genre,
-      enabled,
-    });
-
-    Product.update(product, {
-      where: {
-        id,
-      },
-    });
-    res.status(200).send("producto editado");
+    Product.update(
+      { name, description, model, price, genre },
+      {
+        where: {
+          id,
+        },
+      }
+    );
+    res.status(200).send("product update");
   } catch (err) {
     res.status(400).send(err);
   }

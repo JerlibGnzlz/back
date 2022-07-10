@@ -243,6 +243,16 @@ const tshirt = [
     categoryId: 4,
     brandId: 2,
   },
+  {
+    name: "gildan",
+    description: "cotton t-shirt",
+    model: "16-65",
+    price: "9.0",
+    image: ["https://m.media-amazon.com/images/I/31ff2ROq7xL._AC_.jpg"],
+    genre: "neutral",
+    categoryId: 4,
+    brandId: 3,
+  },
 ];
 
 //camisas
@@ -290,6 +300,17 @@ const pant = [
     price: "32.0",
     image: ["https://m.media-amazon.com/images/I/71pHQ8klnvL._AC_UY500_.jpg"],
     genre: "men",
+    categoryId: 6,
+    brandId: 11,
+  },
+
+  {
+    name: "saozi",
+    description: "anime pants",
+    model: "16-71",
+    price: "24.99",
+    image: ["https://m.media-amazon.com/images/I/51nMm8RTivL._AC_UX466_.jpg"],
+    genre: "neutral",
     categoryId: 6,
     brandId: 11,
   },
@@ -570,6 +591,7 @@ const user = [
     lastNames: "Neubigin nothi",
     phone: "+5496684645",
     birthDate: "1983-11-11",
+    genre: "male",
   },
 
   {
