@@ -1,4 +1,4 @@
-const { Product, User, Coments } = require("../db");
+const { Product, User, Coments, Order, OrderItem } = require("../db");
 const { Op } = require("sequelize");
 
 const controller = {};
@@ -7,7 +7,10 @@ const getMedia = async (productId) => {
   const comments = await Coments.findAll({
     attributes: ["rating"],
     where: {
-      productId,
+      [Op.and]: {
+        productId,
+        enabled: true,
+      },
     },
   });
   const promedio = comments.reduce((acc, currentValue) => {
@@ -24,7 +27,10 @@ controller.getComments = async (req, res) => {
   if (id) {
     try {
       const searchComments = await Coments.findAll({
-        where: { productId: id },
+        where: { [Op.and]: {
+                          productId: id,
+                          enabled: true,
+            }, },
         include: [
           {
             model: Product,
@@ -59,16 +65,17 @@ controller.getComments = async (req, res) => {
 };
 
 controller.postComments = async (req, res) => {
-  const { rating, review, productId, userId } = req.body;
-  if (!rating || !review || !productId || !userId) {
+  const { rating, review, productId, email } = req.body;
+  if (!rating || !review || !productId || !email) {
     return res.status(400).json({ menssage: "All data are required" });
   }
   try {
+    let user = await User.findOne({where: {email: email}})
     await Coments.create({
       rating,
       review,
       productId,
-      userId,
+      userId : user.id
     });
     const promedio = await getMedia(productId);
     await Product.update(
@@ -88,15 +95,30 @@ controller.postComments = async (req, res) => {
 };
 
 controller.deleteComments = async (req, res) => {
-  const { idUser, idComment } = req.params;
+  const {id, productId} = req.params;
+  console.log(id)
   try {
-    await Coments.destroy({
-      where: {
-        userId: idUser,
-        id: idComment,
+    await Coments.update(
+      {
+        enabled: false
       },
-    });
-
+      {
+      where: {
+        id: id,
+      }
+      },
+    );
+    const promedio = await getMedia(productId);
+    await Product.update(
+      {
+        rating: promedio,
+      },
+      {
+        where: {
+          id: productId,
+        },
+      }
+    );
     return res.status(200).json({ menssage: "Comment deleted" });
   } catch (error) {
     res.status(400).json({ menssage: "Bad required" });
@@ -104,19 +126,32 @@ controller.deleteComments = async (req, res) => {
 };
 
 controller.updateComments = async (req, res) => {
-  const { idUser, id, review } = req.body;
-  if (!idUser || !id || !review) {
+  const { email, id, review, rating, productId } = req.body;
+  if (!email || !id || !review || !rating || !productId) {
     return res.status(400).json({ menssage: "can't update comment" });
   }
   try {
+    let user = await User.findOne({where: {email: email}})
     const update = await Coments.update(
       {
         review,
+        rating
       },
       {
         where: {
           id,
-          userId: idUser,
+          userId: user.id,
+        },
+      }
+    );
+    const promedio = await getMedia(productId);
+    await Product.update(
+      {
+        rating: promedio,
+      },
+      {
+        where: {
+          id: productId,
         },
       }
     );
@@ -125,5 +160,40 @@ controller.updateComments = async (req, res) => {
     return res.status(500).json({ error: error });
   }
 };
+
+controller.userPermison = async (req, res) => {
+  const { email, id} = req.query;
+  try {
+    const doesExist = await Coments.findAll({
+      where: {[Op.and]: {
+        productId: id,
+        enabled: true,
+        } },
+      include: [
+        {
+          model: User,
+          where: {email: email}
+        },
+      ],
+    });
+    if(doesExist[0]){
+      return res.status(200).json(false)
+    }
+    else{
+    let user = await User.findOne({
+                              where: {email : email},
+                              include:[{model: Order, 
+                                  include:[{model: OrderItem,}]}]})
+    let find = user.orders.some(o => o.orderItems.some(i => i.dataValues.productId === parseInt(id)))
+    if(find){
+    return res.status(200).json(true);}
+    else{
+      return res.status(200).json(false)
+    }
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error });
+  }
+}
 
 module.exports = controller;
