@@ -28,12 +28,12 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       genre: {
-        type: DataTypes.ENUM("men", "women", "kids", "accesories"),
+        type: DataTypes.ENUM("men", "women", "kids", "accesories", "neutral"),
         allowNull: false,
       },
-      stock:{
+      stock: {
         type: DataTypes.INTEGER,
-        defaultValue: 10
+        defaultValue: 10,
       },
       enabled: {
         type: DataTypes.BOOLEAN,
