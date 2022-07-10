@@ -1,7 +1,7 @@
 const { Product, Brand, Category } = require("../db");
 const { Op } = require("sequelize");
 const Joi = require("joi");
-const { serialize } = require("pg-protocol");
+//const { serialize } = require("pg-protocol");
 const controller = {};
 
 controller.product = async (req, res) => {
@@ -199,7 +199,9 @@ const schema = Joi.object({
   image: Joi.array().items(Joi.string()).required(),
   brandId: Joi.number().required(),
   categoryId: Joi.number().required(),
-  genre: Joi.string().valid("men", "women", "kids", "accesories").insensitive(),
+  genre: Joi.string()
+    .valid("men", "women", "kids", "accesories", "neutral")
+    .insensitive(),
 });
 
 controller.createProduct = async (req, res) => {
@@ -281,11 +283,11 @@ controller.createProduct = async (req, res) => {
 
 controller.editPorduct = async (req, res) => {
   const { id } = req.params;
-  const { name, description, model, price, genre } = req.body;
+  const { name, description, model, price, genre, stock } = req.body;
 
   try {
     Product.update(
-      { name, description, model, price, genre },
+      { name, description, model, price, genre, stock },
       {
         where: {
           id,

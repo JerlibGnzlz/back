@@ -13,12 +13,11 @@ const userProfile = require("./userProfile");
 
 const modificateAdmin = require("./userAdminMod");
 
-
 const order = require("./order");
 const favorites = require("./favorites");
 
 const commentUsers = require("./commentUsers");
-
+const productAdmin = require("./productAdmin");
 
 //const softMiddleware = require("../middleware/integrationSoft");
 //const middleware = require("../middleware");
@@ -43,6 +42,7 @@ router.use("/profile", userProfile);
 router.use("/adminMod", modificateAdmin);
 
 router.use("/comments", commentUsers);
+router.use("/productAdmin", productAdmin);
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
