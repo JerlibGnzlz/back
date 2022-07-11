@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
       primaryKey: true
     },
     state: {
-      type: DataTypes.ENUM(["pending","approved", "send", "delivered"]),
+      type: DataTypes.ENUM(["pending","approved", "send", "delivered", "rejected"]),
       allowNull:false,
     },
     total:{

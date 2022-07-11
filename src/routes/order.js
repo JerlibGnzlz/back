@@ -6,6 +6,7 @@ module.exports = router;
 
 router.get("/", controller.allOrders);
 
+router.get("/detail", controller.oneOrder);
 router.get("/:email", controller.getHistory);
 
 // router.put("/:email",);
