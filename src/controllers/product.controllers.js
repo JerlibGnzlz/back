@@ -291,7 +291,19 @@ controller.editPorduct = async (req, res) => {
 
   try {
     Product.update(
-      { name, description, model, price, genre, stock },
+      {
+        name,
+        description,
+        model,
+        price,
+        genre,
+        stock,
+        image: req.file
+          ? [
+              `https://free-style-store.herokuapp.com/uploads/${req.file.filename}`,
+            ]
+          : null,
+      },
       {
         where: {
           id,
