@@ -11,7 +11,7 @@ const verifyUser = async (req, res) => {
 
   if (userExist) {
     // const emailfound = userExist.map((e) => e.id);
-    res.status(200).send(userExist);
+    res.status(200).json({ isAdmin: userExist.isAdmin });
   } else {
     res.status(400).send("must be register");
   }

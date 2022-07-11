@@ -120,7 +120,9 @@ controller.createUser = async (req, res) => {
         image:
           genre === "male"
             ? "https://us.123rf.com/450wm/artemstepanov/artemstepanov1606/artemstepanov160601036/57880370-cara-del-avatar-masculino-vector-plantilla-pictograma-bot%C3%B3n-ronda-icono-de-moda-plana-con-el-hombre-.jpg"
-            : "https://e7.pngegg.com/pngimages/193/660/png-clipart-computer-icons-woman-avatar-avatar-girl-black-hair-logo.png",
+            : genre === "female"
+            ? "https://e7.pngegg.com/pngimages/193/660/png-clipart-computer-icons-woman-avatar-avatar-girl-black-hair-logo.png"
+            : "https://st3.depositphotos.com/11742109/36001/v/1600/depositphotos_360013274-stock-illustration-anonymous-gender-neutral-face-avatar.jpg",
         isAdmin: false,
         enabled: true,
       });
