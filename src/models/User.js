@@ -33,12 +33,12 @@ module.exports = (sequelize) => {
     },
 
     genre: {
-      type: DataTypes.ENUM("male", "female"),
+      type: DataTypes.ENUM("male", "female", "i prefer not to say"),
     },
     image: {
       type: DataTypes.STRING,
     },
-    favorites:{
+    favorites: {
       type: DataTypes.ARRAY(DataTypes.DECIMAL),
       defaultValue: [],
       allowNull: true,

@@ -200,7 +200,7 @@ const schema = Joi.object({
   brandId: Joi.number().required(),
   categoryId: Joi.number().required(),
   genre: Joi.string()
-    .valid("men", "women", "kids", "accesories", "neutral")
+    .valid("men", "women", "kids", "accesories", "no gender")
     .insensitive(),
 });
 
