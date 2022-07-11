@@ -196,7 +196,7 @@ const schema = Joi.object({
   description: Joi.string().min(30).max(400).required(),
   model: Joi.string(),
   price: Joi.number().required(),
-  image: Joi.array().items(Joi.string()).required(),
+  // image: Joi.array().items(Joi.string()).required(),
   brandId: Joi.number().required(),
   categoryId: Joi.number().required(),
   genre: Joi.string()
@@ -205,7 +205,7 @@ const schema = Joi.object({
 });
 
 controller.createProduct = async (req, res) => {
-  const { name, description, model, price, image, brandId, categoryId, genre } =
+  const { name, description, model, price, brandId, categoryId, genre } =
     req.body;
 
   try {
@@ -214,7 +214,7 @@ controller.createProduct = async (req, res) => {
       description: description,
       model: model,
       price: price,
-      image: image,
+      // image: image,
       brandId: brandId,
       categoryId: categoryId,
       genre: genre,
@@ -231,10 +231,14 @@ controller.createProduct = async (req, res) => {
         description: description,
         model: model,
         price: price,
-        image: image,
         brandId: brandId,
         categoryId: categoryId,
         rating: 0,
+        image: req.file
+          ? [
+              `https://free-style-store.herokuapp.com/uploads/${req.file.filename}`,
+            ]
+          : null,
       });
       res.status(200).send("producto creado");
     }
