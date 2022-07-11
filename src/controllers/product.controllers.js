@@ -199,9 +199,7 @@ const schema = Joi.object({
   // image: Joi.array().items(Joi.string()).required(),
   brandId: Joi.number().required(),
   categoryId: Joi.number().required(),
-  genre: Joi.string()
-    .valid("men", "women", "kids", "accesories", "no gender")
-    .insensitive(),
+  genre: Joi.string().valid("men", "women", "kids", "no gender").insensitive(),
 });
 
 controller.createProduct = async (req, res) => {

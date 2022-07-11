@@ -16,17 +16,17 @@ const {
 
 //categorias
 const categories = [
-  { name: "footwear" }, //1
-  { name: "handbags" }, //2
-  { name: "jackets" }, //3
-  { name: "Tshirts" }, //4
-  { name: "shirts" }, //5
-  { name: "pants" }, //6
-  { name: "blouses" }, //7
-  { name: "coat" }, //8
-  { name: "skirt" }, //9
-  { name: "sportswear" }, //10
-  { name: "accesories" }, //11
+  { name: "calzado" }, //1
+  { name: "bolsos" }, //2
+  { name: "chaquetas" }, //3
+  { name: "camisetas" }, //4
+  { name: "camisas" }, //5
+  { name: "pabtalones" }, //6
+  { name: "blusas" }, //7
+  { name: "sacos" }, //8
+  { name: "faldas" }, //9
+  { name: "ropa deportiva" }, //10
+  { name: "accesorios" }, //11
 ];
 
 //marcas
@@ -48,9 +48,9 @@ const brands = [
 const shoes = [
   {
     name: "classic meet for men",
-    description: "perfect shoes for formal events",
+    description: "zapatos perfectos para eventos formales",
     model: "16-01",
-    price: "55.8",
+    price: "7.900",
     image: ["https://m.media-amazon.com/images/I/51inY39-t8L._AC_UY535_.jpg"],
     genre: "men",
     categoryId: 1,
@@ -59,9 +59,9 @@ const shoes = [
 
   {
     name: "formal shoe for men",
-    description: "perfect shoes for any events",
+    description: "perfectos para cualquier evento",
     model: "16-02",
-    price: "44.9",
+    price: "11.700",
     image: ["https://m.media-amazon.com/images/I/71ZKsSWet3L._AC_UY535_.jpg"],
     genre: "men",
     categoryId: 1,
@@ -70,10 +70,10 @@ const shoes = [
   },
 
   {
-    name: "modern boots for women",
-    description: "perfect boots with a unique design ",
+    name: "modern boots",
+    description: "botas perfectas con un diseño unico",
     model: "16-03",
-    price: "62.7",
+    price: "10.500",
     image: ["https://m.media-amazon.com/images/I/71ZpqVu-naL._AC_UY695_.jpg"],
     genre: "women",
     categoryId: 1,
@@ -82,9 +82,9 @@ const shoes = [
 
   {
     name: "keen",
-    description: "unisex sandals",
+    description: "sandalias comodas y livianas",
     model: "16-31",
-    price: "33.75",
+    price: "8.600",
     image: [
       "https://m.media-amazon.com/images/I/61sCNegBP3L._AC_UY695_.jpg",
       "https://m.media-amazon.com/images/I/71smUzEifRL._AC_SX625._SX._UX._SY._UY_.jpg",
@@ -99,9 +99,9 @@ const shoes = [
 const bags = [
   {
     name: "work bag",
-    description: "multi-pocket work bag",
+    description: "bolso de trabajo con multiples compartimientos",
     model: "16-04",
-    price: "25.3",
+    price: "6.400",
     image: [
       "https://m.media-amazon.com/images/I/81RELFdUhoL._AC_UY535_.jpg",
       "https://m.media-amazon.com/images/I/8169az1D46L._AC_UY535_.jpg",
@@ -114,9 +114,9 @@ const bags = [
 
   {
     name: "black bag",
-    description: "multi-design bag",
+    description: "bolso multifuncional para cualquier ocasion",
     model: "16-05",
-    price: "20.6",
+    price: "10.550",
     image: [
       "https://m.media-amazon.com/images/I/81nFSgx+9cL._AC_UX569_.jpg",
       "https://m.media-amazon.com/images/I/51DFYACbVCL._AC_SX569._SX._UX._SY._UY_.jpg",
@@ -128,9 +128,9 @@ const bags = [
 
   {
     name: "red bag",
-    description: "multi-design bag",
+    description: "bolso practico y comodo para cargar",
     model: "16-06",
-    price: "21.5",
+    price: "9.850",
     image: [
       "https://m.media-amazon.com/images/I/71GHgfcRGRL._AC_UY625_.jpg",
       "https://m.media-amazon.com/images/I/61ge3K13IaS._AC_SY675._SX._UX._SY._UY_.jpg",
@@ -142,9 +142,9 @@ const bags = [
 
   {
     name: "skip hop",
-    description: "School backpack",
+    description: "morral para colegio con multiples bolsillos",
     model: "16-32",
-    price: "21.99",
+    price: "8.300",
     image: [
       "https://m.media-amazon.com/images/I/91sH6MYYkxL._SX450_.jpg",
       "https://m.media-amazon.com/images/I/81qOTTeBEWL._SX466_.jpg",
@@ -160,9 +160,9 @@ const bags = [
 const jackets = [
   {
     name: "zip up jacket",
-    description: "suitable for any outfit",
+    description: "perfecta para cualquier prenda",
     model: "16-07",
-    price: "31.23",
+    price: "5.400",
     image: [
       "https://m.media-amazon.com/images/I/71oOXgSRyOS._AC_UX466_.jpg",
       "https://m.media-amazon.com/images/I/816F2JaFHuS._AC_SY550._SX._UX._SY._UY_.jpg",
@@ -174,9 +174,9 @@ const jackets = [
 
   {
     name: "transformer jacket",
-    description: "optimus or bumble bee",
+    description: "chaqueta de transformers diseño exclusivo",
     model: "16-33",
-    price: "21.23",
+    price: "4.800",
     image: [
       "https://m.media-amazon.com/images/I/71FkNESJmbL._AC_UX569_.jpg",
       "https://m.media-amazon.com/images/I/8112HgHJs1L._AC_SX569._SX._UX._SY._UY_.jpg",
@@ -188,9 +188,9 @@ const jackets = [
 
   {
     name: "sport jacket",
-    description: "suitable for cold day",
+    description: "chaqueta termica con diseño comodo para inviernos",
     model: "16-08",
-    price: "33.0",
+    price: "16.900",
     image: ["https://m.media-amazon.com/images/I/51okOH2sQcL._AC_UX522_.jpg"],
     genre: "men",
     categoryId: 3,
@@ -199,9 +199,9 @@ const jackets = [
 
   {
     name: "sport jacket2",
-    description: "suitable for cold day",
+    description: "chaqueta termica con diseño comodo para inviernos",
     model: "16-09",
-    price: "33.0",
+    price: "16.900",
     image: ["https://m.media-amazon.com/images/I/61gFpfJNSBL._AC_UX522_.jpg"],
     genre: "women",
     categoryId: 3,
@@ -213,9 +213,9 @@ const jackets = [
 const tshirt = [
   {
     name: "exclusive line t-shirt",
-    description: "T-shirt that adapts to your body",
+    description: "camiseta con un diseño unico se adapta al cuerpo",
     model: "16-10",
-    price: "25.0",
+    price: "3.800",
     image: ["https://m.media-amazon.com/images/I/61eibu+hUkL._AC_UX569_.jpg"],
     genre: "men",
     categoryId: 4,
@@ -224,9 +224,9 @@ const tshirt = [
 
   {
     name: "comfortable t-shirt",
-    description: "unique and delicate lines",
+    description: "camiseta con lineas delicadas",
     model: "16-11",
-    price: "23.0",
+    price: "5.700",
     image: ["https://m.media-amazon.com/images/I/618j4k33ROS._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 4,
@@ -235,9 +235,9 @@ const tshirt = [
 
   {
     name: "modern t-shirt",
-    description: "bright color t-shirt",
+    description: "camiseta juvenil perfecta para una ocasion informal",
     model: "16-12",
-    price: "21.0",
+    price: "6.300",
     image: ["https://m.media-amazon.com/images/I/71pYFYbDiQL._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 4,
@@ -245,9 +245,9 @@ const tshirt = [
   },
   {
     name: "gildan",
-    description: "cotton t-shirt",
+    description: "100% algodon de la mejor calidad",
     model: "16-65",
-    price: "9.0",
+    price: "6.600",
     image: ["https://m.media-amazon.com/images/I/31ff2ROq7xL._AC_.jpg"],
     genre: "no gender",
     categoryId: 4,
@@ -259,9 +259,9 @@ const tshirt = [
 const shirt = [
   {
     name: "cotton shirt",
-    description: "checkered shirt with bright colors",
+    description: "camisa a cuadros con colores vivos",
     model: "16-13",
-    price: "23.6",
+    price: "5.700",
     image: ["https://m.media-amazon.com/images/I/71L1baFFLTL._AC_UY550_.jpg"],
     genre: "men",
     categoryId: 5,
@@ -270,9 +270,9 @@ const shirt = [
 
   {
     name: "elegant shirt",
-    description: "long sleeve button down shirt",
+    description: "camisa de manga larga elegante y ajustable",
     model: "16-14",
-    price: "29.0",
+    price: "7.900",
     image: ["https://m.media-amazon.com/images/I/61lO2wFWxvS._AC_UX569_.jpg"],
     genre: "men",
     categoryId: 5,
@@ -281,9 +281,9 @@ const shirt = [
 
   {
     name: "cowboy shirt",
-    description: "denim style shirt with cute cuts",
+    description: "camisa estilo vaquera con cortes delicados",
     model: "16-15",
-    price: "27.0",
+    price: "8.500",
     image: ["https://m.media-amazon.com/images/I/81nUKxgPb-L._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 5,
@@ -306,9 +306,9 @@ const pant = [
 
   {
     name: "saozi",
-    description: "anime pants",
+    description: "pantalones de anime para fanaticos reales",
     model: "16-71",
-    price: "24.99",
+    price: "8.600",
     image: ["https://m.media-amazon.com/images/I/51nMm8RTivL._AC_UX466_.jpg"],
     genre: "no gender",
     categoryId: 6,
@@ -317,9 +317,9 @@ const pant = [
 
   {
     name: "woman pants",
-    description: "pants for daily use",
+    description: "pantalones de uso cotidiano comodos y duraderos",
     model: "16-17",
-    price: "31.7",
+    price: "6.600",
     image: ["https://m.media-amazon.com/images/I/71aoxjomUnL._AC_UX569_.jpg"],
     genre: "women",
     categoryId: 6,
@@ -328,9 +328,9 @@ const pant = [
 
   {
     name: "youth pants",
-    description: "weekend pants",
+    description: "pantalones casuales comodos y delicados",
     model: "16-18",
-    price: "27.6",
+    price: "4.900",
     image: ["https://m.media-amazon.com/images/I/71yHXc49QjL._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 6,
@@ -342,9 +342,9 @@ const pant = [
 const blouse = [
   {
     name: "milumia",
-    description: "round neck blouse",
+    description: "blusa cuello redondo adecuada para cualquier prenda",
     model: "16-19",
-    price: "14.9",
+    price: "4.600",
     image: ["https://m.media-amazon.com/images/I/5157vTKqycL._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 7,
@@ -353,9 +353,9 @@ const blouse = [
 
   {
     name: "shewin",
-    description: "boho style casual blouse",
+    description: "estilo bohemio con flores y colores llamativos",
     model: "16-20",
-    price: "13.6",
+    price: "5.900",
     image: ["https://m.media-amazon.com/images/I/719Ix30s4jS._AC_UL320_.jpg"],
     genre: "women",
     categoryId: 7,
@@ -364,9 +364,9 @@ const blouse = [
 
   {
     name: "allegra",
-    description: "floral blouse",
+    description: "estilo juvenil perfecto para cualquier reunion ",
     model: "16-21",
-    price: "16.3",
+    price: "5.800",
     image: ["https://m.media-amazon.com/images/I/71aCF6HJp4L._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 7,
@@ -378,9 +378,9 @@ const blouse = [
 const coat = [
   {
     name: "golden coat",
-    description: "fancy sequin suit",
+    description: "traje de lujo de lentejuelas para brillar en cualquier lugar",
     model: "16-22",
-    price: "45.8",
+    price: "11.800",
     image: ["https://m.media-amazon.com/images/I/81M5wlxrYqL._AC_UX569_.jpg"],
     genre: "men",
     categoryId: 8,
@@ -389,9 +389,9 @@ const coat = [
 
   {
     name: "coofandy",
-    description: "elegant casual coat",
+    description: "casual, elegante y como abrigo",
     model: "16-23",
-    price: "39.0",
+    price: "10.600",
     image: ["https://m.media-amazon.com/images/I/81+Pos5XcRL._AC_UY550_.jpg"],
     genre: "men",
     categoryId: 8,
@@ -400,9 +400,9 @@ const coat = [
 
   {
     name: "pretty woman",
-    description: "great and elegant coat",
+    description: "abrigo elegante para citas formales",
     model: "16-24",
-    price: "42.3",
+    price: "15.900",
     image: ["https://m.media-amazon.com/images/I/61FKCaOHDsL._AC_UX569_.jpg"],
     genre: "women",
     categoryId: 8,
@@ -414,9 +414,9 @@ const coat = [
 const skirt = [
   {
     name: "alelly",
-    description: "short summer skirt",
+    description: "falda corta ideal para dias de verano",
     model: "16-25",
-    price: "16.3",
+    price: "3.600",
     image: ["https://m.media-amazon.com/images/I/81qUwb-ojWL._AC_UX425_.jpg"],
     genre: "women",
     categoryId: 9,
@@ -425,9 +425,9 @@ const skirt = [
 
   {
     name: "prinstory",
-    description: "beach skirt",
+    description: "falda larga perfecta para un dia de playa",
     model: "16-26",
-    price: "11.8",
+    price: "4.900",
     image: ["https://m.media-amazon.com/images/I/71pgDYTADWL._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 9,
@@ -436,9 +436,9 @@ const skirt = [
 
   {
     name: "sheln",
-    description: "high waist skirt",
+    description: "falda de cintura alta casual",
     model: "16-27",
-    price: "16.5",
+    price: "4.300",
     image: [
       "https://m.media-amazon.com/images/I/81PGCu6n8KL._AC_UY550_.jpg",
       "https://m.media-amazon.com/images/I/61B7KbdXTEL._AC_SX569._SX._UX._SY._UY_.jpg",
@@ -453,39 +453,39 @@ const skirt = [
 const accesories = [
   {
     name: "andolit",
-    description: "sun glasses uv protection",
+    description: "gafas de sol con protector solar",
     model: "16-34",
-    price: "21.99",
+    price: "3.600",
     image: ["https://m.media-amazon.com/images/I/61rPdKiel2L._AC_UX569_.jpg"],
-    genre: "accesories",
+    genre: "no gender",
     categoryId: 11,
     brandId: 3,
   },
 
   {
     name: "new soul",
-    description: "layered choker",
+    description: "gargantilla en capas con dije",
     model: "16-35",
-    price: "12.99",
+    price: "5.300",
     image: [
       "https://m.media-amazon.com/images/I/61qxPOO43wL._AC_UX569_.jpg",
       "https://m.media-amazon.com/images/I/7142P7bw7dL._AC_UX569_.jpg",
     ],
-    genre: "accesories",
+    genre: "no gender",
     categoryId: 10,
     brandId: 7,
   },
 
   {
     name: "deweisn",
-    description: "travel mirror",
+    description: "espejo de viaje util en todo momento",
     model: "16-36",
-    price: "29.82",
+    price: "2.500",
     image: [
       "https://m.media-amazon.com/images/I/31pfgqap5BS._AC_.jpg",
       "https://m.media-amazon.com/images/I/61KB+1pCSML._AC_SX679_.jpg",
     ],
-    genre: "accesories",
+    genre: "no gender",
     categoryId: 10,
     brandId: 3,
   },
@@ -495,9 +495,9 @@ const accesories = [
 const sport = [
   {
     name: "zetiy",
-    description: "sports set",
+    description: "set deportivo completo",
     model: "16-28",
-    price: "33.0",
+    price: "12.500",
     image: ["https://m.media-amazon.com/images/I/71UrTifhh7L._AC_UX569_.jpg"],
     genre: "women",
     categoryId: 10,
@@ -506,9 +506,9 @@ const sport = [
 
   {
     name: "leaduty",
-    description: "2 piece sports set",
+    description: "connjunto de 2 piezas para deporte",
     model: "16-29",
-    price: "37.3",
+    price: "11.300",
     image: ["https://m.media-amazon.com/images/I/51qYzGbhKhL._AC_UY550_.jpg"],
     genre: "women",
     categoryId: 10,
@@ -517,9 +517,9 @@ const sport = [
 
   {
     name: "jya",
-    description: "compression set",
+    description: "traje de compresion para ejercicio de alto rendimiento",
     model: "16-30",
-    price: "40.2",
+    price: "15.600",
     image: ["https://m.media-amazon.com/images/I/51-YNLnErVL._AC_UX569_.jpg"],
     genre: "men",
     categoryId: 10,
