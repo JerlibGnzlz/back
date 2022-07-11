@@ -31,10 +31,8 @@ controller.allOrders = async (req, res) => {
 }
 
 controller.oneOrder = async (req, res) => {
-    const {email, id} = req.query;
-    let user = await User.findAll({where: {email: email}})
+    const { id} = req.query;
     try{
-    if(user[0].dataValues.isAdmin){
         res.status(200).send(await Order.findAll({
             where: {id: id},
             include: [
@@ -45,10 +43,6 @@ controller.oneOrder = async (req, res) => {
                             include: [{model: Brand}]}]
                     }],
         }))
-    }
-    else{
-        res.status(404).send({error: true, msg: "Not an admin user"})
-    }
     }
     catch(err){
         res.status(400).send(err)
