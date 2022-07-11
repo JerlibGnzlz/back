@@ -31,9 +31,9 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("men", "women", "kids", "accesories"),
         allowNull: false,
       },
-      stock:{
+      stock: {
         type: DataTypes.INTEGER,
-        defaultValue: 10
+        defaultValue: 10,
       },
       enabled: {
         type: DataTypes.BOOLEAN,

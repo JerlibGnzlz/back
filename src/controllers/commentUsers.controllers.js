@@ -63,6 +63,7 @@ controller.postComments = async (req, res) => {
   if (!rating || !review || !productId || !userId) {
     return res.status(400).json({ menssage: "All data are required" });
   }
+  console.log(body, "aaa");
   try {
     await Coments.create({
       rating,

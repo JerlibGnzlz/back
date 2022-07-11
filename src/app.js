@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
+const { v4 } = require("uuid");
 
 //const { CORS_URL } = process.env;
 require("./db.js");
@@ -12,13 +15,40 @@ const server = express();
 
 server.name = "API";
 
-server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-server.use(bodyParser.json({ limit: "50mb" }));
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, "public/uploads"),
+  filename: (req, file, cb) => {
+    cb(null, v4() + path.extname(file.originalname));
+  },
+});
+
+const uploadImage = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    console.log(file);
+    const filetypes = /jpeg|jpg|png|gif/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname));
+    if (mimetype && extname) {
+      return cb(null, true);
+    }
+
+    cb("Error: El Archivo no es de tipo imagen");
+  },
+}).single("image");
+
+server.use(uploadImage);
+
+server.use(express.urlencoded({ extended: true, limit: "50mb" }));
+server.use(express.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use(morgan("dev"));
 server.use(cors());
 
 server.use("/", routes);
+
+//static Files
+server.use(express.static(path.join(__dirname, "public")));
 
 // Error catching endware.
 server.use((err, req, res, next) => {
