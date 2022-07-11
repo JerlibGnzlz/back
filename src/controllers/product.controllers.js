@@ -233,7 +233,9 @@ controller.createProduct = async (req, res) => {
         categoryId: categoryId,
         rating: 0,
         image: req.file
-          ? [`http://localhost:3001/uploads/${req.file.filename}`]
+          ? [
+              `https://free-style-store.herokuapp.com/uploads/${req.file.filename}`,
+            ]
           : null,
       });
       res.status(200).send("producto creado");

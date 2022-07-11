@@ -8,7 +8,6 @@ const multer = require("multer");
 const path = require("path");
 const { v4 } = require("uuid");
 
-//const { CORS_URL } = process.env;
 require("./db.js");
 
 const server = express();
