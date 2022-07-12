@@ -69,7 +69,6 @@ controller.postComments = async (req, res) => {
   if (!rating || !review || !productId || !email) {
     return res.status(400).json({ menssage: "All data are required" });
   }
-  console.log(body, "aaa");
   try {
     let user = await User.findOne({where: {email: email}})
     await Coments.create({
