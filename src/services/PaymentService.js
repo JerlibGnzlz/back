@@ -25,9 +25,10 @@ class PaymentService {
       items: items,
       back_urls: {
         success: `${CORS_URL}/products`,
-        failure: "/failure",
-        pending: "/pending",
+        failure: `${CORS_URL}/products`,
+        pending: `${CORS_URL}/products`,
       },
+      auto_return: "approved",
       payment_methods: {
         installments: 1,
       },

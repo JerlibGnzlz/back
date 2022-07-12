@@ -7,7 +7,7 @@ const orderItem = require("./orderItem");
 const mercadopago = require("./mercadoPago");
 const auth = require("./auth");
 const verifyUser = require("./verifyUser");
-
+const chards = require("./chards")
 const userAddress = require("./userAddress");
 const userProfile = require("./userProfile");
 
@@ -36,7 +36,7 @@ router.use("/brands", brand);
 router.use("/orderItem", orderItem);
 router.use("/auth", auth);
 router.use("/verify", verifyUser);
-
+router.use("/chards", chards)
 router.use("/userAddress", userAddress);
 router.use("/profile", userProfile);
 router.use("/adminMod", modificateAdmin);

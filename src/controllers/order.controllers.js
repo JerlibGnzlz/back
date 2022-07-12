@@ -94,6 +94,10 @@ controller.generateOrder = async (req, res) => {
             await Product.update({stock: current.stock - product[i].quantity}, {where: {id: product[i].id}})
         }
         let date = new Date()
+        if(status === "in_process"){
+            console.log(status)
+            status = "pending"
+        }
         date = `${date.getUTCDate()}-${date.getUTCMonth() + 1}-${date.getFullYear()}`
         let order = await Order.create({id:payment_id, state:status, total:total, userId:doesUserExist.id, date:date, payment_type: payment_type})
         await req.body.product.map(async p => {
