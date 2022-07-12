@@ -306,11 +306,21 @@ controller.editPorduct = async (req, res) => {
         price,
         genre,
         stock,
-        image: req.file
-          ? [
-              `https://free-style-store.herokuapp.com/uploads/${req.file.filename}`,
-            ]
-          : null,
+        image:
+          req.files.length === 3
+            ? [
+                `http://localhost:3001/uploads/${req.files[0].filename}`,
+                `http://localhost:3001/uploads/${req.files[1].filename}`,
+                `http://localhost:3001/uploads/${req.files[2].filename}`,
+              ]
+            : req.files.length === 2
+            ? [
+                `http://localhost:3001/uploads/${req.files[0].filename}`,
+                `http://localhost:3001/uploads/${req.files[1].filename}`,
+              ]
+            : req.files.length === 1
+            ? [`http://localhost:3001/uploads/${req.files[0].filename}`]
+            : res.status(404).send("debes subir al menos 1 imagen"),
       },
       {
         where: {
