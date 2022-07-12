@@ -34,7 +34,7 @@ const uploadImage = multer({
 
     cb("Error: El Archivo no es de tipo imagen");
   },
-}).single("image");
+}).array("image", 3);
 
 server.use(uploadImage);
 
