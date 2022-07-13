@@ -25,10 +25,10 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+        allowNull: true,
       },
       genre: {
-        type: DataTypes.ENUM("men", "women", "kids", "no gender"),
+        type: DataTypes.ENUM("men", "women", "kids", "no-gender"),
         allowNull: false,
       },
       stock: {
