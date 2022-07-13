@@ -15,6 +15,7 @@ controller.getUserProfile = async (req, res) => {
         },
       });
       return res.status(200).json({
+        id: users.id,
         email: users.email,
         names: users.names,
         lastNames: users.lastNames,
