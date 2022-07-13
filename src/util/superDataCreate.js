@@ -103,7 +103,7 @@ const bags = [
     model: "16-04",
     price: "6400",
     image: [
-      "https://m.media-amazon.com/images/I/81RELFdUhoL._AC_UY535_.jpg",
+      "https://m.media-amazon.com/images/cI/81RELFdUhoL._AC_UY535_.jpg",
       "https://m.media-amazon.com/images/I/8169az1D46L._AC_UY535_.jpg",
     ],
     genre: "men",

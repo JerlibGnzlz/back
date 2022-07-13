@@ -12,7 +12,6 @@ class PaymentService {
         description: i.description,
         picture_url: i.image[0],
         category_id: "cat123",
-        currency_id: "USD",
         quantity: i.quantity,
         unit_price: parseFloat(i.price),
       };

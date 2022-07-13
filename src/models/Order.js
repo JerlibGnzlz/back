@@ -22,6 +22,25 @@ module.exports = (sequelize) => {
     payment_type:{
       type:DataTypes.TEXT,
       allowNull:false
-    }
+    },
+    postalCode:{
+      type:DataTypes.STRING(20),
+      allowNull:false,
+    },
+    estado:{
+      type:DataTypes.STRING(30),
+      allowNull:false
+    },
+    city:{
+      type:DataTypes.STRING(40),
+      allowNull:false
+    },
+    address:{
+      type:DataTypes.STRING(40),
+      allowNull:false
+    },
+    partment:{
+      type:DataTypes.STRING(40)
+    },
   });
 };

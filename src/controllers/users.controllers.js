@@ -1,4 +1,4 @@
-const { User } = require("../db");
+const { User, UserAddress } = require("../db");
 const { Op } = require("sequelize");
 const checkUser = require("../middleware/checkUser");
 const verify = require("./verifyUser");
@@ -33,7 +33,7 @@ controller.getAllUsers = async (req, res) => {
   } else {
     try {
       if (checkUserA.isAdmin) {
-        res.status(200).send(await User.findAll());
+        res.status(200).send(await User.findAll({include: [{ model: UserAddress }] }));
       } else {
         res.status(400).send("must be an admin to get user");
       }
