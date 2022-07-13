@@ -29,6 +29,7 @@ const uploadImage = multer({
     const mimetype = filetypes.test(file.mimetype);
     const extname = filetypes.test(path.extname(file.originalname));
     if (mimetype && extname) {
+      console.log("esta aca?");
       return cb(null, true);
     }
 

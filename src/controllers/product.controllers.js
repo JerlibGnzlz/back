@@ -199,12 +199,14 @@ const schema = Joi.object({
   // image: Joi.array().items(Joi.string()).required(),
   brandId: Joi.number().required(),
   categoryId: Joi.number().required(),
-  genre: Joi.string().valid("men", "women", "kids", "no gender").insensitive(),
+  genre: Joi.string().valid("men", "women", "kids", "no-gender").insensitive(),
 });
 
 controller.createProduct = async (req, res) => {
   const { name, description, model, price, brandId, categoryId, genre } =
     req.body;
+
+  console.log(req.files);
 
   try {
     await schema.validateAsync({
@@ -246,12 +248,13 @@ controller.createProduct = async (req, res) => {
               ]
             : req.files.length === 1
             ? [`http://localhost:3001/uploads/${req.files[0].filename}`]
-            : res.status(404).send("debes subir al menos 1 imagen"),
+            : null,
       });
-      res.status(200).send("producto creado");
+      return res.status(200).send("producto creado");
     }
   } catch (err) {
-    res.status(400).send(err);
+    console.log(err);
+    return res.status(400).json({ err });
   }
 };
 
