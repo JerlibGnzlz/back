@@ -1,6 +1,6 @@
 const e = require("express");
 const { Op } = require("sequelize");
-const { OrderItem, Brand, Category, Product, Order, User } = require("../db");
+const { OrderItem, Brand, Category, Product, Order, User, UserAddress } = require("../db");
 
 //const {Op} = require('sequelize')
 const controller = {};
@@ -76,7 +76,7 @@ controller.generateOrder = async (req, res) => {
     let{status, payment_id, payment_type} = req.query
     let{product, user} = req.body
     let doesExist = await Order.findAll({where: {id: payment_id}})
-    let doesUserExist = await User.findOne({where: {email: user}})
+    let doesUserExist = await User.findOne({where: {email: user}, include: [UserAddress]})
     let current = undefined
     if(!product){
         console.log("no hay productos")
@@ -90,16 +90,17 @@ controller.generateOrder = async (req, res) => {
         let total = 0
         for(let i = 0; i < product.length; i++){
             total = total + (parseFloat(product[i].price) * product[i].quantity)
+            console.log(total, "peyment")
             current = await Product.findOne({where:{id:product[i].id}})
             await Product.update({stock: current.stock - product[i].quantity}, {where: {id: product[i].id}})
         }
         let date = new Date()
         if(status === "in_process"){
-            console.log(status)
             status = "pending"
         }
+        console.log(doesUserExist.userAddresses)
         date = `${date.getUTCDate()}-${date.getUTCMonth() + 1}-${date.getFullYear()}`
-        let order = await Order.create({id:payment_id, state:status, total:total, userId:doesUserExist.id, date:date, payment_type: payment_type})
+        let order = await Order.create({id:payment_id, state:status, total:total, userId:doesUserExist.id, date:date, payment_type: payment_type, postalCode: doesUserExist.userAddresses[0].postalCode, estado: doesUserExist.userAddresses[0].state, city: doesUserExist.userAddresses[0].city, address: doesUserExist.userAddresses[0].address, partment: doesUserExist.userAddresses[0].partment })
         await req.body.product.map(async p => {
                 await OrderItem.create({orderId: order.id, productId: p.id, quantity: p.quantity})
         })
