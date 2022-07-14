@@ -15,13 +15,7 @@ controller.getUserProfile = async (req, res) => {
         },
       });
       return res.status(200).json({
-        email: users.email,
-        names: users.names,
-        lastNames: users.lastNames,
-        phone: users.phone,
-        birthDate: users.birthDate,
-        genre: users.genre,
-        image: users.image,
+       users
       });
     } catch (err) {
       res.status(400).send(err);
